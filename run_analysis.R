@@ -189,7 +189,7 @@ for(i in 1:nrow(tidy_melt)){
      if(grepl("Estimated",tidy_melt$variable[i])) tidy_melt$measurement[i]<-"magnitude"
 
      if(grepl("time",tidy_melt$variable[i])) tidy_melt$domain[i]<-"time"
-     if(grepl("freq",tidy_melt$variable[i])) tidy_melt$domain[i]<-"frequency"
+     if(grepl("freq",tidy_melt$variable[i])) tidy_melt$domain[i]<-"freq"
     
      if(grepl("1",tidy_melt$activity[i])) tidy_melt$activity[i]<-"Walking"    
      if(grepl("2",tidy_melt$activity[i])) tidy_melt$activity[i]<-"Walking upstairs"
