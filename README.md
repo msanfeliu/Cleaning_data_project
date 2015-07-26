@@ -97,77 +97,32 @@ Lastly, I created additional factor variables, empty at this point, to include e
 I stored the resulting dataset as **melted_set**. This has 11,880 observations and 8 variables: "subject", "activity", "set", "feature", "domain", "statistic", "measurement" and "average".
 
 Each variable was assigned a descriptive label equivalent to the feature it represented. For example:
-activity: "Walking", "Walking upstairs", "Walking downstairs", "Sitting", "Standing" and "Laying".
-feature: "Body acceleration", "Gravity acceleration", "Body acceleration jerk", "Body angular velocity" and "Body angular velocity jerk"
+* activity: "Walking", "Walking upstairs", "Walking downstairs", "Sitting", "Standing" and "Laying".
+* feature: "Body acceleration", "Gravity acceleration", "Body acceleration jerk", "Body angular velocity" and "Body angular velocity jerk"
+* domain: "time" and "frequency"
+* statistic: "mean" or "std"
+* measurement: "X", "Y", "Z" or "magnitude"
+
+The tidy_melt data set is the long form as mentioned in the rubric as either long 
+or wide form is acceptable, see https://class.coursera.org/getdata-030/forum/thread?thread_id=107 for discussion"
+
+However, I have reduced this long to a sort of "wide" form, to include one observation per subject and activity but by type of "statistic": mean or standar deviation; that is, for each feature, the x,y,z and total values are presented for both time and frequency domains.  In sum: there are 2 observations per subject and activity, one for "means" and one for "standard deviarions"
+
+The resulting data set is **tidy_cast**, which has 1,800 observations with 12 variables: 
+The project_tidy data set contains the following variables:  "subject", "activity", "feature",  "statistic", "X_time", "Y_time", "Z_time", "magnitude_time", "X_freq", "Y_freq", "Z_freq", and "magnitude_freq". 
+
+The data set includes two observations per subject and activity and feature, one corresponding to the "mean" and one for the "standar deviation";  for each feature, the x,y,z and total values are presented for both time and frequency domains
 
 
+30 subjects x 6 activitiesx x 5 features x 2 observations = 1,800 observations.
 
+Now, there are more than one observation per subject and activity, so it is still sort of a "long" form since there is more than one observation per subject per activity, however, it is a tidy set: each variable that was measured is in one column, 
+and each different observation of that variable is in a different row.
 
+#####  Final step: save data set as a txt file using  write.table() using row.name=FALSE 
 
-
-
-
-for(i in 1:nrow(tidy_melt)){
-    if(grepl("Body_Acceleration",          tidy_melt$variable[i])) tidy_melt$feature[i]<-
-
-     if(grepl("mean",tidy_melt$variable[i])) tidy_melt$statistic[i]<-"mean"
-     if(grepl("std",tidy_melt$variable[i])) tidy_melt$statistic[i]<-"std"  
-
-     if(grepl("X",tidy_melt$variable[i])) tidy_melt$measurement[i]<-"X"
-     if(grepl("Y",tidy_melt$variable[i])) tidy_melt$measurement[i]<-"Y"
-     if(grepl("Z",tidy_melt$variable[i])) tidy_melt$measurement[i]<-"Z"
-     if(grepl("Estimated",tidy_melt$variable[i])) tidy_melt$measurement[i]<-"magnitude"
-
-     if(grepl("time",tidy_melt$variable[i])) tidy_melt$domain[i]<-"time"
-     if(grepl("freq",tidy_melt$variable[i])) tidy_melt$domain[i]<-"freq"
-    
-     if(grepl("1",tidy_melt$activity[i])) tidy_melt$activity[i]<-"
-
-}
-
-tidy_melt$feature<-as.factor(tidy_melt$feature)
-tidy_melt$statistic<-as.factor(tidy_melt$statistic)
-tidy_melt$measurement<-as.factor(tidy_melt$measurement)
-tidy_melt$domain<-as.factor(tidy_melt$domain)
-tidy_melt$activity<-as.factor(tidy_melt$activity)
-
-tidy_melt<-select(tidy_melt, subject, activity, set, feature, domain, statistic, measurement, average)
-
-
-######## IMPORTANT ######
-### This is the long form as mentioned in the rubric as either long 
-### or wide form is acceptable, 
-### see https://class.coursera.org/getdata-030/forum/thread?thread_id=107 for discussion"
-#########################
-#
-# However, I have reduced this long to a sort of "wide" form, to include
-# one observation per subject and activity but by type of "statistic": mean or standar deviation
-# that is, for each feature, the x,y,z and total values are presented for both time and frequency domains
-# In sum: there are 2 observations per subject and activity, one for "means" and one for "standard deviarions"
-#
-
-
-tidy_cast<-dcast(tidy_melt, subject+ activity+feature + statistic ~measurement+domain, value.var="average")
-
-tidy_cast<-select(tidy_cast, subject, activity, feature, statistic, X_time,Y_time,Z_time, magnitude_time, X_freq,Y_freq,Z_freq, magnitude_freq)
-
-
-# Now, there are more than one observation per subject and activity, so it
-# is still sort of a "long" form since there is more than one observation per subject per activity,
-# however, it is a tidy set: each variable that was measured is in one column, 
-#  and each different observation of that variable is in a different row.
-
-####  save data set as a txt file using  write.table() using row.name=FALSE 
-
-* 1. Merges the training and the test sets to create one data set.
-* 2. Extracts only the measurements on the mean and standard deviation for each measurement
-* 3. Uses descriptive activity names to name the activities in the data set
-* 4. Appropriately labels the data set with descriptive variable names.
-* 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+To complete the assingnment, the tidy_cast data set was saved as a text file to be uploaded, as required. This file was named **project_tidy.txt**, it was saved in the working directory.
  
-The project_tidy data set contains the following variables (see description below):  "subject", "activity", "feature",  "statistic", "X_time", "Y_time", "Z_time", "magnitude_time", "X_freq", "Y_freq", "Z_freq", and "magnitude_freq". 
-
-The data set includes two observations per subject and activity, one corresponding to the "mean" and one for the "standar deviation";  for each feature, the x,y,z and total values are presented for both time and frequency domains
 
 Please note: This might be considered "long" by some, because it does not have only one observation for each subject and activity, however, it is mentioned in the rubric that either long or wide form is acceptable. See
 https://class.coursera.org/getdata-030/forum/thread?thread_id=107 for discussion"
