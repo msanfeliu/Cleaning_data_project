@@ -29,7 +29,11 @@ Data was transformed (using the run_analysis.R script) to produce a tidy data se
 project_tidy<-read.table("project_tidy.txt", header=TRUE)
 
 To produce the project_tidy data set, the following transformations were done to the original data set:
-
+* 1. Merges the training and the test sets to create one data set.
+* 2. Extracts only the measurements on the mean and standard deviation for each measurement
+* 3. Uses descriptive activity names to name the activities in the data set
+* 4. Appropriately labels the data set with descriptive variable names.
+* 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
  
 The project_tidy data set contains the following variables (see description below):  "subject", "activity", "feature",  "statistic", "X_time", "Y_time", "Z_time", "magnitude_time", "X_freq", "Y_freq", "Z_freq", and "magnitude_freq". 
 
