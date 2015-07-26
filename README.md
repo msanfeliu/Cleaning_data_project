@@ -43,6 +43,7 @@ A full description is available at: http://archive.ics.uci.edu/ml/datasets/Human
 ### Transformations done on the original data
 
 The project completed for the course "Getting and Cleaning Data" uses data collected from the accelerometers from the Samsung Galaxy S smartphone; data was obtained from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
+
 The unzipped files (folder) were placed in the working directory
 
 Data was transformed (using the run_analysis.R script) to produce a tidy data set.  
@@ -63,7 +64,8 @@ Each record contains information for each combination of subject, activity of a 
    
 ##### Step 2. Extracting only the measurements on the mean and standard deviation for each measurement. 
 
-I chose to include only the columns with the words "mean()" or "std()" in them
+I chose to include only the columns with the words "mean()" or "std()" in them.
+
 I created a new data set: **extracted_set** with 10299 observations with 69 variables (66 with measured data plus ID variables for subject, activity and set)
 
 ##### Step 3. Use descriptive activity names to name the activities in the data set
@@ -74,7 +76,7 @@ Note: this step was performed later, when other variables and contents were give
 ##### Step 4. Appropriately labels the data set with descriptive variable names
 
 The 66 variables corresponing to the measurements were given descriptive names that included the following characteristics:
-* Type of feature: "Body_acceleration", "Gravity_Acceleration",  "Body_Acceleration_Jerk",  "Body_Angular_Velocity", "Body angular velocity" and "Body_Angular_Velocity_Jerk", tidy_melt$variable[i])) tidy_melt$feature[i]<-"Body angular velocity jerk"
+* Type of feature: "Body_acceleration", "Gravity_Acceleration",  "Body_Acceleration_Jerk",  "Body_Angular_Velocity", and "Body_Angular_Velocity_Jerk"
 * Axis: "X", "Y", "Z" or "magnitude" (when the value is an estimation form the XYZ values)
 * Domain: "time" or "frequency" 
 * Statistic: "mean" or "std" (standard deviation)
