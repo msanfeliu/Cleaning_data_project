@@ -79,13 +79,12 @@ acticity   (factor)
 
 feature    (factor)
 * Body acceleration        
-* Body acceleration jerk    
 * Body angular velocity   
-* Body angular velocity jerk                 
-* Gravity acceleration    
+* Body acceleration jerk   Jerk singnals (linear acceleration derived in time)
+* Body angular velocity jerk           Jerk singnals (angular velocity derived in time)
+* Gravity acceleration
 
 statistic  (factor)
-
        This variable identifies the type of statistic includen in the rest of variables, below
        
 * mean
@@ -93,19 +92,17 @@ statistic  (factor)
 
 Note:  For all the variables described below, variables represente the average of indiviual records included in the original data sets, which are normalized and bounded within [-1,1].
 
-X_time
-  The mean for the acceleration signal from the smartphone accelerometer X axis in standard gravity units 'g'. 
+X_time   (numeric)
+      The mean for the acceleration signal from the smartphone accelerometer X axis in standard gravity units 'g'. 
 
-Y_time
+Y_time    (numeric)
+      The acceleration signal from the smartphone accelerometer Y axis in standard gravity units 'g'. 
 
-  The acceleration signal from the smartphone accelerometer Y axis in standard gravity units 'g'. 
+Z_time  (numeric)
+      The acceleration signal from the smartphone accelerometer Y axis in standard gravity units 'g'. 
 
-Z_time
-
-  The acceleration signal from the smartphone accelerometer Y axis in standard gravity units 'g'. 
-
-magnitude_time
- The estimated magnitud fromt the X-Y and X measurementes from acceleration signal from the smartphone accelerometer,
+magnitude_time   (numeric)
+       The estimated magnitud fromt the X-Y and X measurementes from acceleration signal from the smartphone accelerometer,
  in standard gravity units 'g'.
 
 
