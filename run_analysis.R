@@ -181,38 +181,58 @@ for(i in 1:nrow(tidy_melt)){
     if(grepl("Body_Angular_Velocity_Jerk", tidy_melt$variable[i])) tidy_melt$feature[i]<-"Body angular velocity jerk"
 
      if(grepl("mean",tidy_melt$variable[i])) tidy_melt$statistic[i]<-"mean"
-     if(grepl("std",tidy_melt$variable[i])) tidy_melt$statistic[i]<-"standard deviation"  
+     if(grepl("std",tidy_melt$variable[i])) tidy_melt$statistic[i]<-"std"  
 
-     if(grepl("X",tidy_melt$variable[i])) tidy_melt$measurement[i]<-"X direction"
-     if(grepl("Y",tidy_melt$variable[i])) tidy_melt$measurement[i]<-"Y direction"
-     if(grepl("Z",tidy_melt$variable[i])) tidy_melt$measurement[i]<-"Z direction"
+     if(grepl("X",tidy_melt$variable[i])) tidy_melt$measurement[i]<-"X"
+     if(grepl("Y",tidy_melt$variable[i])) tidy_melt$measurement[i]<-"Y"
+     if(grepl("Z",tidy_melt$variable[i])) tidy_melt$measurement[i]<-"Z"
      if(grepl("Estimated",tidy_melt$variable[i])) tidy_melt$measurement[i]<-"magnitude"
 
      if(grepl("time",tidy_melt$variable[i])) tidy_melt$domain[i]<-"time"
      if(grepl("freq",tidy_melt$variable[i])) tidy_melt$domain[i]<-"frequency"
     
-     if(grepl("1",tidy_melt$activity[i])) tidy_melt$activity[i]<-"1. Walking"    
-     if(grepl("2",tidy_melt$activity[i])) tidy_melt$activity[i]<-"2. Walking upstairs"
-     if(grepl("3",tidy_melt$activity[i])) tidy_melt$activity[i]<-"3. Walking downstairs"
-     if(grepl("4",tidy_melt$activity[i])) tidy_melt$activity[i]<-"4. Sitting"
-     if(grepl("5",tidy_melt$activity[i])) tidy_melt$activity[i]<-"5. Standing"      
-     if(grepl("6",tidy_melt$activity[i])) tidy_melt$activity[i]<-"6. Laying"
+     if(grepl("1",tidy_melt$activity[i])) tidy_melt$activity[i]<-"Walking"    
+     if(grepl("2",tidy_melt$activity[i])) tidy_melt$activity[i]<-"Walking upstairs"
+     if(grepl("3",tidy_melt$activity[i])) tidy_melt$activity[i]<-"Walking downstairs"
+     if(grepl("4",tidy_melt$activity[i])) tidy_melt$activity[i]<-"Sitting"
+     if(grepl("5",tidy_melt$activity[i])) tidy_melt$activity[i]<-"Standing"      
+     if(grepl("6",tidy_melt$activity[i])) tidy_melt$activity[i]<-"Laying"
 
 }
 
 tidy_melt$feature<-as.factor(tidy_melt$feature)
 tidy_melt$statistic<-as.factor(tidy_melt$statistic)
-tidy_melt$measure<-as.factor(tidy_melt$measure)
+tidy_melt$measurement<-as.factor(tidy_melt$measurement)
 tidy_melt$domain<-as.factor(tidy_melt$domain)
 tidy_melt$activity<-as.factor(tidy_melt$activity)
 
-tidy_melt<-select(tidy_melt, subject, activity, set, feature,measurement, statistic, average)
+tidy_melt<-select(tidy_melt, subject, activity, set, feature, domain, statistic, measurement, average)
+
+######## IMPORTANT ######
+### This is the long form as mentioned in the rubric as either long 
+### or wide form is acceptable, 
+### see https://class.coursera.org/getdata-030/forum/thread?thread_id=107 for discussion"
+#########################
+#
+# However, I have reduced this long to a sort of "wide" form, to include
+# one observation per subject and activity but by type of feature and domain (time or frequency)
+# that is, for each feature, the x,y,z values are presented
+# as well as the estimated magnitude, for the mean and other for the standard deviation.
+
+tidy_cast<-dcast(tidy_melt, subject+ activity+feature+domain + statistic ~measurement, value.var="average")
+
+tidy_cast<-select(tidy_cast, subject, activity, feature, domain, statistic, X,Y,Z, magnitude)
+
+
+# Now, there are more than one observation per subject and activity, so it
+# is still sort of a "long" form since there is more than one observation per subject per activity,
+# however, it is a tidy set: each variable that was measured is in one column, 
+#  and each different observation of that variable is in a different row.
 
 ####  save data set as a txt file using  write.table() using row.name=FALSE 
 
-write.table(tidy_melt, file = "tidy_melt.txt", row.names = FALSE)
+write.table(tidy_cast, file = "project_tidy.txt", row.names = FALSE)
 
 ## the table is saved in the working directory, to read it back use
-## read.table("tidy_melt.txt")
-
+## project_tidy<-read.table("project_tidy.txt", header=TRUE)
 
