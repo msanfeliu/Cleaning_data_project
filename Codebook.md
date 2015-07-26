@@ -58,50 +58,43 @@ acticity   (factor)
 * Lying
 
 feature    (factor)
-* Body acceleration        Triaxial acceleration from the accelerometer
-* Body angular velocity    Triaxial Angular velocity from the gyroscope
-* Body acceleration jerk   Jerk singnals (linear acceleration derived in time)
-* Body angular velocity jerk           Jerk singnals (angular velocity derived in time)
-* Gravity acceleration         The body acceleration signal obtained by subtracting the gravity from the total acceleration. 
+* Body acceleration :       Triaxial acceleration from the accelerometer
+* Body angular velocity  : Triaxial Angular velocity from the gyroscope
+* Body acceleration jerk  : Jerk singnals (linear acceleration derived in time)
+* Body angular velocity jerk          : Jerk singnals (angular velocity derived in time)
+* Gravity acceleration        : The body acceleration signal obtained by subtracting the gravity from the total acceleration. 
 
-statistic  (factor)
-       This variable identifies the type of statistic includen in the rest of variables, below
-       
+statistic  (factor)  :  This variable identifies the type of statistic includen in the rest of variables, below
 * mean
 * sd
 
 Note:  For all the variables described below, variables represent the average of indiviual records included in the original data sets, which are normalized and bounded within [-1,1].
 
 X_time   (numeric)
-      The average for the acceleration signal from the smartphone accelerometer X axis in standard gravity units 'g'. 
+- The average for the acceleration signal from the smartphone accelerometer X axis in standard gravity units 'g'. 
 
 Y_time    (numeric)
-      The average for the acceleration signal from the smartphone accelerometer Y axis in standard gravity units 'g'. 
+- The average for the acceleration signal from the smartphone accelerometer Y axis in standard gravity units 'g'. 
 
 Z_time  (numeric)
-      The average for the acceleration signal from the smartphone accelerometer Z axis in standard gravity units 'g'. 
+- The average for the acceleration signal from the smartphone accelerometer Z axis in standard gravity units 'g'. 
 
 magnitude_time   (numeric)
-       The estimated magnitud from the X-Y and X measurementes, in standard gravity units 'g'.
+- The estimated magnitud from the X-Y and X measurementes, in standard gravity units 'g'.
 
 X_freq   (numeric)
-      The average for angular velocity vector measured by the gyroscope X axis in radians/second. 
+- The average for angular velocity vector measured by the gyroscope X axis in radians/second. 
 
 Y_freq    (numeric)
-      The average for angular velocity vector measured by the gyroscope Y axis in radians/second. 
+- The average for angular velocity vector measured by the gyroscope Y axis in radians/second. 
 
 Z_freq  (numeric)
-      The average for angular velocity vector measured by the gyroscope Z axis in radians/second. 
+- The average for angular velocity vector measured by the gyroscope Z axis in radians/second. 
 
 magnitude_freq   (numeric)
-       The estimated magnitud from the X-Y and X measurementes, iin radians/second.
+- The estimated magnitud from the X-Y and X measurementes, iin radians/second.
 
 
-
-### Transformations and work done on the original data
-
- 
- 
 ###  Source of original data
 
 Authors:
