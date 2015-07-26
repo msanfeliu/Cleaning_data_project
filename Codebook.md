@@ -84,7 +84,10 @@ feature    (factor)
 * Body angular velocity jerk                 
 * Gravity acceleration    
 
-statistic
+statistic  (factor)
+
+       This variable identifies the type of statistic includen in the rest of variables, below
+       
 * mean
 * sd
 
@@ -92,24 +95,18 @@ Note:  For all the variables described below, variables represente the average o
 
 X_time
   The mean for the acceleration signal from the smartphone accelerometer X axis in standard gravity units 'g'. 
-  Min value:       Max value:
 
 Y_time
-The acceleration signal from the smartphone accelerometer Y axis in standard gravity units 'g'. 
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-   
-   -0.9971 -0.9536 -0.3164 -0.4369 -0.0390  0.9566     360 
+
+  The acceleration signal from the smartphone accelerometer Y axis in standard gravity units 'g'. 
 
 Z_time
-The acceleration signal from the smartphone accelerometer Y axis in standard gravity units 'g'. 
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-   
-   -0.9954 -0.9564 -0.4176 -0.4704 -0.0675  0.9579     360
 
-total_time
-Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  The acceleration signal from the smartphone accelerometer Y axis in standard gravity units 'g'. 
 
--0.9977 -0.9654 -0.7997 -0.6201 -0.3050  0.6446 
+magnitude_time
+ The estimated magnitud fromt the X-Y and X measurementes from acceleration signal from the smartphone accelerometer,
+ in standard gravity units 'g'.
 
 
 
