@@ -1,6 +1,4 @@
----
-title: "Code Book - Tidy data"
-output: html_document
----
+#  Codebook - Tidy data project
+This repository contains project files
 
  
